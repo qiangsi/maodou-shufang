@@ -193,6 +193,55 @@ h1,h2,h3,h4,p{margin:0}
 .gather-foot{border-top:1px solid var(--line);padding-top:14px;display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--ink-3);font-size:12px}
 .gather-foot .pill{background:var(--hover);color:var(--ink-2)}
 
+/* stray cats — instagram-ish carousel */
+.cats .section-head{margin-bottom:clamp(28px,4vw,44px)}
+.cat-track{--cw:min(400px,78vw);gap:18px;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:calc((100% - var(--cw))/2);padding:6px calc((100% - var(--cw))/2) 22px;display:flex;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab}
+.cat-track::-webkit-scrollbar{display:none}
+.cat-track.dragging{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
+.cat-card{flex:0 0 var(--cw);scroll-snap-align:center;background:var(--raised);box-shadow:0 0 0 1px var(--line),0 10px 30px -22px var(--shadow);border-radius:20px;overflow:hidden;opacity:.48;transform:scale(.955);transition:opacity .45s var(--ease),transform .45s var(--ease),box-shadow .45s var(--ease)}
+.cat-card.is-active{opacity:1;transform:none;box-shadow:0 0 0 1px var(--line),0 28px 60px -30px var(--shadow)}
+.cat-head{align-items:center;gap:10px;padding:12px 14px;display:flex}
+.cat-avatar{width:34px;height:34px;flex:none;position:relative;border-radius:50%;background:var(--tone);color:#141214;font-family:var(--serif);font-size:16px;font-weight:900;place-items:center;display:grid}
+.cat-avatar:after{content:"";position:absolute;inset:-3px;border:1.5px solid var(--accent);border-radius:50%}
+.cat-id{justify-items:start;gap:1px;min-width:0;display:grid}
+.cat-id b{font-size:14px;font-weight:700;letter-spacing:.02em}
+.cat-id span{color:var(--ink-3);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:15em}
+.cat-more{margin-left:auto;color:var(--ink-2);font-size:17px;letter-spacing:2px;line-height:1;padding:0 2px}
+.cat-photo{aspect-ratio:1/1;position:relative;overflow:hidden;background:var(--paper-2);-webkit-user-select:none;user-select:none}
+.cat-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.cat-placeholder{position:absolute;inset:0;place-items:center;display:grid;background:radial-gradient(circle at 50% 42%,color-mix(in srgb,var(--tone) 20%,transparent),transparent 62%)}
+.cat-placeholder svg{width:44%;max-width:170px;color:var(--tone);opacity:.42}
+.cat-placeholder span{position:absolute;bottom:18%;color:var(--ink-3);font-size:12px;letter-spacing:.08em}
+.cat-tag{position:absolute;left:14px;bottom:14px;align-items:center;gap:8px;background:color-mix(in srgb,var(--raised) 88%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 0 0 1px var(--line),0 8px 24px -12px var(--shadow);border-radius:11px;padding:7px 12px 7px 9px;display:flex}
+.cat-tag:before{content:"";width:9px;height:9px;flex:none;border:1.5px solid var(--accent);border-radius:50%;box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 18%,transparent)}
+.cat-tag b{font-family:var(--serif);font-size:15px;font-weight:900;line-height:1.2}
+.cat-tag small{font-family:var(--mono);color:var(--ink-3);font-size:10px}
+.cat-burst{position:absolute;inset:0;pointer-events:none;place-items:center;display:grid;opacity:0}
+.cat-burst svg{width:88px;height:88px;color:#fff;filter:drop-shadow(0 6px 18px rgba(0,0,0,.35))}
+.cat-burst.pop{animation:catHeart .85s var(--ease) both}
+@keyframes catHeart{0%{opacity:0;transform:scale(.3)}30%{opacity:1;transform:scale(1.15)}55%{transform:scale(1)}100%{opacity:0;transform:scale(1.1)}}
+.cat-actions{align-items:center;gap:14px;padding:11px 14px 4px;display:flex}
+.cat-actions button{color:var(--ink-2);place-items:center;display:grid;transition:color .2s,transform .3s var(--spring)}
+.cat-actions button:hover{color:var(--ink);transform:translateY(-2px)}
+.cat-actions button.liked{color:var(--accent)}
+.cat-actions button.liked svg{fill:currentColor}
+.cat-actions .cat-save{margin-left:auto}
+.cat-meta{gap:4px;padding:2px 14px 16px;display:grid}
+.cat-likes{font-size:13px;font-weight:700}
+.cat-caption{color:var(--ink-2);font-size:13px;line-height:1.65;text-wrap:pretty}
+.cat-caption b{color:var(--ink);font-weight:700}
+.cat-hashtag{color:var(--accent);font-size:12px}
+.cat-time{color:var(--ink-3);font-family:var(--mono);font-size:11px}
+.cat-controls{justify-content:center;align-items:center;gap:18px;margin-top:14px;display:flex}
+.cat-arrow{width:40px;height:40px;flex:none;color:var(--ink-2);background:var(--raised);box-shadow:0 0 0 1px var(--line);border-radius:50%;place-items:center;display:grid;transition:color .2s,transform .3s var(--ease),box-shadow .3s var(--ease)}
+.cat-arrow:hover:not(:disabled){color:var(--ink);transform:translateY(-2px);box-shadow:0 0 0 1px var(--line),0 12px 24px -14px var(--shadow)}
+.cat-arrow:disabled{opacity:.32;cursor:default}
+.cat-dots{align-items:center;gap:7px;display:flex}
+.cat-dot{width:7px;height:7px;background:var(--ink-3);border-radius:99px;opacity:.5;transition:width .35s var(--ease),background .35s,opacity .35s}
+.cat-dot.on{width:22px;background:var(--accent);opacity:1}
+.cat-hint{text-align:center;color:var(--ink-3);font-size:12px;margin-top:12px}
+:root[data-theme="light"] .cat-card:not(.is-active){opacity:.72}
+
 /* visit */
 .visit{text-align:center;flex-direction:column;align-items:center;gap:20px;display:flex}
 .visit .display{max-width:20em}
@@ -234,7 +283,9 @@ h1,h2,h3,h4,p{margin:0}
   .rank-why{grid-column:1/-1;grid-row:2}
   .rank-cat{display:none}
   .rank-status{grid-column:2;grid-row:1}
-  .nav-links{display:none}
+  .nav-links{gap:16px}
+  .nav-links a{display:none}
+  .nav-links a[href="#cats"]{display:inline-flex;white-space:nowrap;font-size:13px}
 }
 @media (max-width:600px){
   .window{height:500px}
@@ -253,6 +304,10 @@ h1,h2,h3,h4,p{margin:0}
   .hero-title{font-size:clamp(40px,11vw,60px)}
   .footer-right{gap:16px}
   .social-links{padding-left:0;border-left:0}
+  .cat-track{gap:12px}
+  .cat-card{opacity:.6}
+  .cat-id span{max-width:11em}
+  .cat-tag{left:10px;bottom:10px}
 }
 @media (prefers-reduced-motion:reduce){
   *,:before,:after{scroll-behavior:auto!important;transition-duration:1ms!important;animation-duration:1ms!important;animation-iteration-count:1!important}
@@ -278,6 +333,7 @@ h1,h2,h3,h4,p{margin:0}
       <a href="#about" class="active">这间书房</a>
       <a href="#shelf">本周书架</a>
       <a href="#gather">共读</a>
+      <a href="#cats">流浪猫之家</a>
       <a href="#visit">来访</a>
     </nav>
     <div class="nav-end">
@@ -481,6 +537,28 @@ h1,h2,h3,h4,p{margin:0}
     </div>
   </section>
 
+  <section class="section cats" id="cats">
+    <div class="section-head reveal">
+      <span class="eyebrow">CATS · 流浪猫之家</span>
+      <h2 class="display">屋檐下，<br>住着几位不缴费的房客。</h2>
+      <p class="lede">它们不办借书证，也不还书。每只挂一块小牌，名字里都带一颗豆。左右翻翻，认认脸。</p>
+    </div>
+    <div class="cat-stage reveal">
+      <div class="cat-track" id="catTrack" role="region" aria-label="流浪猫照片，可左右翻页" tabindex="0"></div>
+      <div class="cat-controls">
+        <button class="cat-arrow" id="catPrev" type="button" aria-label="上一只猫">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <div class="cat-dots" id="catDots" role="group" aria-label="选择猫咪"></div>
+        <button class="cat-arrow" id="catNext" type="button" aria-label="下一只猫">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      <p class="cat-hint">按 ← → 翻页，也可以按住拖动 · 双击照片给猫一颗心</p>
+      <p class="cat-hint">相框、猫牌名与文案均为示例占位，照片到位后替换即可。</p>
+    </div>
+  </section>
+
   <section class="section visit" id="visit">
     <div class="reveal" style="display:flex;flex-direction:column;align-items:center;gap:20px">
       <span class="eyebrow">VISIT · 来坐坐</span>
@@ -504,7 +582,7 @@ h1,h2,h3,h4,p{margin:0}
   <div class="footer-inner">
     <span>© 2026 毛豆书房 · 慢慢读，慢慢来。</span>
     <div class="footer-right">
-      <div class="footer-links"><a href="#shelf">本周书架</a><a href="#gather">共读日历</a><a href="#visit">来访信息</a><a href="#top">回到顶部 ↑</a></div>
+      <div class="footer-links"><a href="#shelf">本周书架</a><a href="#gather">共读日历</a><a href="#cats">流浪猫之家</a><a href="#visit">来访信息</a><a href="#top">回到顶部 ↑</a></div>
       <div class="social-links" role="group" aria-label="在别处找到毛豆">
         <a class="icon-link" href="https://space.bilibili.com/3546904858201041" target="_blank" rel="noopener noreferrer" aria-label="B站：毛豆书房" title="B站">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7.5" width="18" height="13" rx="3"/><path d="M7.5 3.5 10 7.5M16.5 3.5 14 7.5"/><path d="M8.5 12.4v2.2M15.5 12.4v2.2"/><path d="M10.5 17.4h3"/></svg>
@@ -597,7 +675,184 @@ h1,h2,h3,h4,p{margin:0}
     });
   }
 
-  var sections = ['about','shelf','gather','visit'];
+  /* ---------- 流浪猫之家 ----------
+     换照片：把每只猫的 photo 改成 'cats/xxx.jpg'（把图片放进站点 cats/ 目录）或任意图片 URL；
+     name / no / spot / caption / likes 按真实猫牌填写。photo 留空则显示相框占位。 */
+  var CATS = [
+    {name:'橘豆',   no:'01', tone:'#e0a25c', photo:'', spot:'窗台第三格 · 常驻', caption:'午后总在窗台第三格，晒到打呼。有人翻书就睁一只眼。', likes:128, tags:'#橘豆 #窗台常驻', time:'2 天前'},
+    {name:'黑豆',   no:'02', tone:'#8b8fa6', photo:'', spot:'书架顶层 · 夜班',   caption:'只在关店后出现。灯一灭，就跳上最高的那层巡视。', likes:96,  tags:'#黑豆 #夜班店长', time:'4 天前'},
+    {name:'白豆',   no:'03', tone:'#d9d3c4', photo:'', spot:'门口薄荷盆 · 迎宾', caption:'谁来都要先蹭一下裤脚，再放行。', likes:211, tags:'#白豆 #迎宾', time:'6 天前'},
+    {name:'狸豆',   no:'04', tone:'#b08a63', photo:'', spot:'纸箱里 · 流动',     caption:'纸箱比猫窝好用这件事，它已经论证过很多次。', likes:74,  tags:'#狸豆 #纸箱研究员', time:'1 周前'},
+    {name:'奶牛豆', no:'05', tone:'#9bb7c4', photo:'', spot:'柜台 · 收银助理',   caption:'专挑结账时躺下，把爪子搭在扫码枪旁边。', likes:163, tags:'#奶牛豆 #收银助理', time:'1 周前'},
+    {name:'灰豆',   no:'06', tone:'#a3a39c', photo:'', spot:'屋檐 · 观望',       caption:'还没决定要不要进来。先隔着玻璃看了两个冬天。', likes:58,  tags:'#灰豆 #慢热', time:'2 周前'}
+  ];
+  var ICON = {
+    heart:'<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 5.6a5.2 5.2 0 0 0-7.4 0L12 7l-1.4-1.4a5.2 5.2 0 0 0-7.4 7.4L12 21.5l8.8-8.5a5.2 5.2 0 0 0 0-7.4z"/></svg>',
+    comment:'<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-3.6-.7L3 21l1.7-5.2A8.5 8.5 0 1 1 20.5 11.5z"/></svg>',
+    share:'<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>',
+    save:'<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>',
+    bigHeart:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.8 5.6a5.2 5.2 0 0 0-7.4 0L12 7l-1.4-1.4a5.2 5.2 0 0 0-7.4 7.4L12 21.5l8.8-8.5a5.2 5.2 0 0 0 0-7.4z"/></svg>',
+    cat:'<svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M33 45 29 21l18 12a38 38 0 0 1 26 0l18-12-4 24c7 8 11 18 11 29 0 24-17 38-38 38S22 98 22 74c0-11 4-21 11-29z"/><path d="M46 66v4M74 66v4M60 76l-4 4h8l-4-4M48 85c4 4 8 6 12 6s8-2 12-6"/><path d="M25 78l-14-5M25 87l-14 4M95 78l14-5M95 87l14 4"/></svg>'
+  };
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+  var track = document.getElementById('catTrack');
+  var dotsBox = document.getElementById('catDots');
+  var prevBtn = document.getElementById('catPrev');
+  var nextBtn = document.getElementById('catNext');
+  if(track){
+    CATS.forEach(function(cat, i){
+      var card = document.createElement('article');
+      card.className = 'cat-card';
+      card.style.setProperty('--tone', cat.tone);
+      card.setAttribute('aria-label', cat.name + ' 的照片卡');
+      var media = cat.photo
+        ? '<img src="' + esc(cat.photo) + '" alt="' + esc(cat.name) + ' 的照片" loading="lazy" draggable="false">'
+        : '<div class="cat-placeholder">' + ICON.cat + '<span>照片待放</span></div>';
+      card.innerHTML =
+        '<header class="cat-head">' +
+          '<div class="cat-avatar" aria-hidden="true">豆</div>' +
+          '<div class="cat-id"><b>' + esc(cat.name) + '</b><span>毛豆书房 · ' + esc(cat.spot) + '</span></div>' +
+          '<span class="cat-more" aria-hidden="true">···</span>' +
+        '</header>' +
+        '<div class="cat-photo">' + media +
+          '<div class="cat-tag"><b>' + esc(cat.name) + '</b><small>NO.' + esc(cat.no) + '</small></div>' +
+          '<div class="cat-burst" aria-hidden="true">' + ICON.bigHeart + '</div>' +
+        '</div>' +
+        '<div class="cat-actions">' +
+          '<button type="button" class="cat-like" aria-label="给' + esc(cat.name) + '一颗心" aria-pressed="false">' + ICON.heart + '</button>' +
+          '<button type="button" aria-label="评论" data-toast="评论功能留给真猫，它们不回消息。">' + ICON.comment + '</button>' +
+          '<button type="button" aria-label="分享" data-toast="把这只猫分享给朋友吧：' + esc(cat.name) + '。">' + ICON.share + '</button>' +
+          '<button type="button" class="cat-save" aria-label="收藏" data-toast="记下 ' + esc(cat.name) + ' 了，下次来认认它。">' + ICON.save + '</button>' +
+        '</div>' +
+        '<div class="cat-meta">' +
+          '<span class="cat-likes"><span class="js-likes">' + cat.likes + '</span> 次摸摸</span>' +
+          '<p class="cat-caption"><b>' + esc(cat.name) + '</b> ' + esc(cat.caption) + '</p>' +
+          '<span class="cat-hashtag">' + esc(cat.tags) + '</span>' +
+          '<span class="cat-time">' + esc(cat.time) + '</span>' +
+        '</div>';
+      track.appendChild(card);
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'cat-dot' + (i === 0 ? ' on' : '');
+      dot.setAttribute('aria-label', '第 ' + (i + 1) + ' 只：' + cat.name);
+      dot.addEventListener('click', function(){ goTo(i); });
+      dotsBox.appendChild(dot);
+    });
+
+    /* 动态生成的 toast 按钮需单独绑定 */
+    track.querySelectorAll('[data-toast]').forEach(function(el){
+      el.addEventListener('click', function(){ showToast(el.getAttribute('data-toast')); });
+    });
+
+    var cards = Array.prototype.slice.call(track.querySelectorAll('.cat-card'));
+    var dots = Array.prototype.slice.call(dotsBox.children);
+    var current = 0;
+    function step(){
+      if(!cards.length) return 380;
+      var gap = parseFloat(getComputedStyle(track).columnGap) || 18;
+      return cards[0].offsetWidth + gap;
+    }
+    function paint(i){
+      current = i;
+      cards.forEach(function(c, k){ c.classList.toggle('is-active', k === i); });
+      dots.forEach(function(d, k){
+        d.classList.toggle('on', k === i);
+        d.setAttribute('aria-current', k === i ? 'true' : 'false');
+      });
+      prevBtn.disabled = (i === 0);
+      nextBtn.disabled = (i === cards.length - 1);
+    }
+    function goTo(i){
+      i = Math.max(0, Math.min(cards.length - 1, i));
+      paint(i);
+      track.scrollTo({left: i * step(), behavior: 'smooth'});
+    }
+
+    /* 心形点赞 / 双击照片弹大心 */
+    track.addEventListener('click', function(e){
+      var node = e.target;
+      if(node && node.nodeType === 3) node = node.parentElement;
+      var like = node && node.closest ? node.closest('.cat-like') : null;
+      if(!like || !track.contains(like)) return;
+      var num = like.closest('.cat-card').querySelector('.js-likes');
+      var on = like.classList.toggle('liked');
+      like.setAttribute('aria-pressed', on ? 'true' : 'false');
+      num.textContent = parseInt(num.textContent, 10) + (on ? 1 : -1);
+    });
+    track.querySelectorAll('.cat-photo').forEach(function(photo){
+      photo.addEventListener('dblclick', function(){
+        var like = photo.parentElement.querySelector('.cat-like');
+        if(like && !like.classList.contains('liked')) like.click();
+        var burst = photo.querySelector('.cat-burst');
+        burst.classList.remove('pop');
+        void burst.offsetWidth;
+        burst.classList.add('pop');
+      });
+    });
+
+    prevBtn.addEventListener('click', function(){ goTo(current - 1); });
+    nextBtn.addEventListener('click', function(){ goTo(current + 1); });
+    track.addEventListener('keydown', function(e){
+      if(e.key === 'ArrowLeft'){ e.preventDefault(); goTo(current - 1); }
+      else if(e.key === 'ArrowRight'){ e.preventDefault(); goTo(current + 1); }
+      else if(e.key === 'Home'){ e.preventDefault(); goTo(0); }
+      else if(e.key === 'End'){ e.preventDefault(); goTo(cards.length - 1); }
+    });
+
+    /* 鼠标按住拖动；触屏用原生滑动 */
+    var drag = null, justDragged = false;
+    track.addEventListener('pointerdown', function(e){
+      if(e.pointerType !== 'mouse' || e.button !== 0) return;
+      drag = {x: e.clientX, left: track.scrollLeft, moved: false};
+    });
+    track.addEventListener('pointermove', function(e){
+      if(!drag) return;
+      var dx = e.clientX - drag.x;
+      if(Math.abs(dx) > 5){
+        if(!drag.moved){ drag.moved = true; track.classList.add('dragging'); }
+        track.scrollLeft = drag.left - dx;
+      }
+    });
+    function endDrag(){
+      if(!drag) return;
+      var moved = drag.moved;
+      drag = null;
+      track.classList.remove('dragging');
+      if(moved){
+        justDragged = true;
+        goTo(Math.round(track.scrollLeft / step()));
+        setTimeout(function(){ justDragged = false; }, 0);
+      }
+    }
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointercancel', endDrag);
+    track.addEventListener('click', function(e){
+      if(justDragged){ e.preventDefault(); e.stopPropagation(); justDragged = false; }
+    }, true);
+
+    /* 滚动时同步圆点与前后按钮 */
+    var ticking = false;
+    track.addEventListener('scroll', function(){
+      if(ticking) return;
+      ticking = true;
+      requestAnimationFrame(function(){
+        ticking = false;
+        var mid = track.getBoundingClientRect().left + track.clientWidth / 2;
+        var best = 0, dist = Infinity;
+        cards.forEach(function(c, k){
+          var r = c.getBoundingClientRect();
+          var d = Math.abs(r.left + r.width / 2 - mid);
+          if(d < dist){ dist = d; best = k; }
+        });
+        if(best !== current) paint(best);
+      });
+    }, {passive: true});
+    window.addEventListener('resize', function(){ goTo(current); });
+    paint(0);
+  }
+
+  var sections = ['about','shelf','gather','cats','visit'];
   var links = document.querySelectorAll('.nav-links a');
   var spy = new IntersectionObserver(function(entries){
     entries.forEach(function(en){
