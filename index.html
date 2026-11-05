@@ -195,10 +195,11 @@ h1,h2,h3,h4,p{margin:0}
 
 /* stray cats — instagram-ish carousel */
 .cats .section-head{margin-bottom:clamp(28px,4vw,44px)}
-.cat-track{--cw:min(400px,78vw);gap:18px;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:calc((100% - var(--cw))/2);padding:6px calc((100% - var(--cw))/2) 22px;display:flex;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab}
+.cat-track{--cw:min(400px,78vw);gap:18px;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-behavior:auto;scroll-padding-inline:calc((100% - var(--cw))/2);padding:6px calc((100% - var(--cw))/2) 22px;display:flex;overflow-x:auto;scrollbar-width:none;cursor:grab}
 .cat-track::-webkit-scrollbar{display:none}
-.cat-track.dragging{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
-.cat-card{flex:0 0 var(--cw);scroll-snap-align:center;background:var(--raised);box-shadow:0 0 0 1px var(--line),0 10px 30px -22px var(--shadow);border-radius:20px;overflow:hidden;opacity:.48;transform:scale(.955);transition:opacity .45s var(--ease),transform .45s var(--ease),box-shadow .45s var(--ease)}
+.cat-track.dragging{cursor:grabbing;scroll-snap-type:none}
+/* 只过渡可合成的属性；box-shadow 属重绘，滚动中过渡会在手机上掉帧 */
+.cat-card{flex:0 0 var(--cw);scroll-snap-align:center;background:var(--raised);box-shadow:0 0 0 1px var(--line),0 10px 30px -22px var(--shadow);border-radius:20px;overflow:hidden;opacity:.48;transform:scale(.955);transition:opacity .3s var(--ease),transform .3s var(--ease)}
 .cat-card.is-active{opacity:1;transform:none;box-shadow:0 0 0 1px var(--line),0 28px 60px -30px var(--shadow)}
 .cat-head{align-items:center;gap:10px;padding:12px 14px;display:flex}
 .cat-avatar{width:34px;height:34px;flex:none;position:relative;border-radius:50%;background:var(--tone);color:#141214;font-family:var(--serif);font-size:16px;font-weight:900;place-items:center;display:grid}
@@ -208,7 +209,11 @@ h1,h2,h3,h4,p{margin:0}
 .cat-id span{color:var(--ink-3);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:15em}
 .cat-more{margin-left:auto;color:var(--ink-2);font-size:17px;letter-spacing:2px;line-height:1;padding:0 2px}
 .cat-photo{aspect-ratio:1/1;position:relative;overflow:hidden;background:var(--paper-2);-webkit-user-select:none;user-select:none}
-.cat-slides{width:100%;height:100%;display:flex;transition:transform .5s var(--ease);touch-action:pan-y}
+/* 多图卡片用原生横向滚动，和外层轮播一样交给合成器；不再用 touch 事件 + transform 跟手 */
+.cat-slides{width:100%;height:100%;display:flex}
+.cat-slides.multi{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none}
+.cat-slides.multi::-webkit-scrollbar{display:none}
+.cat-slides.multi .cat-slide{scroll-snap-align:start;scroll-snap-stop:always}
 .cat-slide{flex:0 0 100%;width:100%;height:100%;object-fit:cover;object-position:var(--pos,center);display:block}
 .cat-photo>img{width:100%;height:100%;object-fit:cover;display:block}
 .cat-counter{position:absolute;top:12px;right:12px;z-index:2;background:rgba(20,18,20,.6);color:#fff;border-radius:99px;padding:3px 10px;font:600 11px/1.5 var(--mono);letter-spacing:.04em}
@@ -300,8 +305,16 @@ h1,h2,h3,h4,p{margin:0}
   .nav-links{gap:16px}
   .nav-links a{display:none}
   .nav-links a[href="#cats"]{display:inline-flex;white-space:nowrap;font-size:13px}
+  /* 全宽 nav 的 backdrop-filter 在手机滚动时每帧都要重算模糊，改为不透明底 */
+  .nav{-webkit-backdrop-filter:none;backdrop-filter:none;background:var(--paper)}
+  .cat-tag,.cat-photo-nav{-webkit-backdrop-filter:none;backdrop-filter:none}
+  .cat-tag{background:color-mix(in srgb,var(--raised) 94%,transparent)}
+  .cat-photo-nav{background:rgba(20,18,20,.76)}
 }
 @media (max-width:600px){
+  /* 去掉非当前卡的缩放，8 张大图就不必各自单独合成一层 */
+  .cat-card{transform:none;opacity:.6}
+  .cat-card.is-active{transform:none}
   .window{height:500px}
   .win-charts{grid-template-columns:1fr}
   .win-charts .chart:nth-child(2){display:none}
@@ -319,7 +332,6 @@ h1,h2,h3,h4,p{margin:0}
   .footer-right{gap:16px}
   .social-links{padding-left:0;border-left:0}
   .cat-track{gap:12px}
-  .cat-card{opacity:.6}
   .cat-id span{max-width:11em}
   .cat-tag{left:10px;bottom:10px}
 }
@@ -568,7 +580,7 @@ h1,h2,h3,h4,p{margin:0}
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
         </button>
       </div>
-      <p class="cat-hint">← → 换一只猫 · 照片上的 ‹ › 或小圆点换一张 · 双击照片给颗心</p>
+      <p class="cat-hint">左右滑换一只猫（电脑上可按住拖动）· 多图卡在照片上左右滑换一张，也可点 ‹ › · 双击照片给颗心</p>
       <p class="cat-hint">按猫牌名归档，8 位房客、13 张照片。旁边的小注是随手写下的，随时可改。</p>
     </div>
   </section>
@@ -724,6 +736,7 @@ h1,h2,h3,h4,p{margin:0}
   var dotsBox = document.getElementById('catDots');
   var prevBtn = document.getElementById('catPrev');
   var nextBtn = document.getElementById('catNext');
+  var smoothOK = !(window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches);
   if(track){
     CATS.forEach(function(cat, i){
       var card = document.createElement('article');
@@ -732,7 +745,8 @@ h1,h2,h3,h4,p{margin:0}
       card.setAttribute('aria-label', cat.name + ' 的照片卡');
       var total = cat.photos.length;
       var slides = cat.photos.map(function(p, k){
-        return '<img class="cat-slide" src="' + esc(p.src) + '" alt="' + esc(cat.name) + ' 的第 ' + (k + 1) + ' 张照片" style="--pos:' + esc(p.pos || 'center') + '" loading="' + (k === 0 ? 'eager' : 'lazy') + '" draggable="false">';
+        var eager = (i < 3 && k === 0);   /* 屏外的卡不抢首屏解码预算 */
+        return '<img class="cat-slide" src="' + esc(p.src) + '" alt="' + esc(cat.name) + ' 的第 ' + (k + 1) + ' 张照片" style="--pos:' + esc(p.pos || 'center') + '" loading="' + (eager ? 'eager' : 'lazy') + '" decoding="async"' + (i === 0 && k === 0 ? ' fetchpriority="high"' : '') + ' draggable="false">';
       }).join('');
       var multi = total > 1
         ? '<span class="cat-counter"><span class="js-cur">1</span> / ' + total + '</span>' +
@@ -764,42 +778,45 @@ h1,h2,h3,h4,p{margin:0}
         '</div>';
       track.appendChild(card);
 
-      /* 每张卡片内部的多图翻页（Instagram 1/3 风格） */
+      /* 多图翻页改用原生横向滚动 + snap：手势全程交给浏览器合成器，
+         不再监听 touch / preventDefault / 写 transform，手机上不会掉帧。 */
       if(total > 1){
         var strip = card.querySelector('.cat-slides');
-        var imgs = card.querySelectorAll('.cat-slide');
+        strip.classList.add('multi');
         var sdots = card.querySelectorAll('.cat-slide-dots i');
         var cur = card.querySelector('.js-cur');
         var pBtn = card.querySelector('.cat-photo-nav.prev');
         var nBtn = card.querySelector('.cat-photo-nav.next');
         var si = 0;
+        var apply = function(n){
+          si = n;
+          strip.dataset.idx = n;
+          cur.textContent = n + 1;
+          sdots.forEach(function(d, k){ d.classList.toggle('on', k === n); });
+          pBtn.disabled = (n === 0);
+          nBtn.disabled = (n === total - 1);
+        };
+        var sync = function(){
+          var n = Math.round(strip.scrollLeft / (strip.clientWidth || 1));
+          n = Math.max(0, Math.min(total - 1, n));
+          if(n !== si) apply(n);
+        };
+        var sraf = false;
+        strip.addEventListener('scroll', function(){
+          if(sraf) return;
+          sraf = true;
+          requestAnimationFrame(function(){ sraf = false; sync(); });
+        }, {passive:true});
         var show = function(n){
-          si = Math.max(0, Math.min(total - 1, n));
-          strip.style.transform = 'translateX(-' + (si * 100) + '%)';
-          cur.textContent = si + 1;
-          sdots.forEach(function(d, k){ d.classList.toggle('on', k === si); });
-          pBtn.disabled = (si === 0);
-          nBtn.disabled = (si === total - 1);
-          imgs[si].setAttribute('loading', 'eager');
-          if(imgs[si + 1]) imgs[si + 1].setAttribute('loading', 'eager');
+          n = Math.max(0, Math.min(total - 1, n));
+          strip.scrollTo({left: n * strip.clientWidth, behavior: smoothOK ? 'smooth' : 'auto'});
         };
         [pBtn, nBtn].forEach(function(b){
           b.addEventListener('pointerdown', function(e){ e.stopPropagation(); });
         });
         pBtn.addEventListener('click', function(){ show(si - 1); });
         nBtn.addEventListener('click', function(){ show(si + 1); });
-        var photo = card.querySelector('.cat-photo');
-        var tx = 0, ty = 0;
-        photo.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, {passive: true});
-        photo.addEventListener('touchend', function(e){
-          var dx = e.changedTouches[0].clientX - tx;
-          var dy = e.changedTouches[0].clientY - ty;
-          if(Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)){
-            e.preventDefault();
-            show(si + (dx < 0 ? 1 : -1));
-          }
-        }, {passive: false});
-        show(0);
+        apply(0);
       }
       var dot = document.createElement('button');
       dot.type = 'button';
@@ -817,25 +834,33 @@ h1,h2,h3,h4,p{margin:0}
     var cards = Array.prototype.slice.call(track.querySelectorAll('.cat-card'));
     var dots = Array.prototype.slice.call(dotsBox.children);
     var current = 0;
-    function step(){
-      if(!cards.length) return 380;
+    /* 步长只在尺寸变化时算一次；滚动回调里不再触发布局计算 */
+    var stepVal = 380, lastW = track.clientWidth;
+    function measure(){
+      if(!cards.length) return;
       var gap = parseFloat(getComputedStyle(track).columnGap) || 18;
-      return cards[0].offsetWidth + gap;
+      stepVal = cards[0].offsetWidth + gap;
     }
+    function step(){ return stepVal; }
+    measure();
+    /* 每次翻页只改前后两张卡，不做 8 张卡的全量 class 遍历 */
+    var painted = -1;
     function paint(i){
+      if(i !== painted){
+        if(cards[painted]) cards[painted].classList.remove('is-active');
+        if(dots[painted]){ dots[painted].classList.remove('on'); dots[painted].setAttribute('aria-current', 'false'); }
+        if(cards[i]) cards[i].classList.add('is-active');
+        if(dots[i]){ dots[i].classList.add('on'); dots[i].setAttribute('aria-current', 'true'); }
+        painted = i;
+      }
       current = i;
-      cards.forEach(function(c, k){ c.classList.toggle('is-active', k === i); });
-      dots.forEach(function(d, k){
-        d.classList.toggle('on', k === i);
-        d.setAttribute('aria-current', k === i ? 'true' : 'false');
-      });
       prevBtn.disabled = (i === 0);
       nextBtn.disabled = (i === cards.length - 1);
     }
     function goTo(i){
       i = Math.max(0, Math.min(cards.length - 1, i));
       paint(i);
-      track.scrollTo({left: i * step(), behavior: 'smooth'});
+      track.scrollTo({left: i * step(), behavior: smoothOK ? 'smooth' : 'auto'});
     }
 
     /* 心形点赞 / 双击照片弹大心 */
@@ -900,24 +925,29 @@ h1,h2,h3,h4,p{margin:0}
       if(justDragged){ e.preventDefault(); e.stopPropagation(); justDragged = false; }
     }, true);
 
-    /* 滚动时同步圆点与前后按钮 */
-    var ticking = false;
+    /* 滚动时只做一次标量运算，不读任何元素几何（滚动中读 rect 会强制重排） */
+    var ticking = false, pending = 0;
     track.addEventListener('scroll', function(){
+      pending = track.scrollLeft;
       if(ticking) return;
       ticking = true;
       requestAnimationFrame(function(){
         ticking = false;
-        var mid = track.getBoundingClientRect().left + track.clientWidth / 2;
-        var best = 0, dist = Infinity;
-        cards.forEach(function(c, k){
-          var r = c.getBoundingClientRect();
-          var d = Math.abs(r.left + r.width / 2 - mid);
-          if(d < dist){ dist = d; best = k; }
-        });
+        var best = Math.max(0, Math.min(cards.length - 1, Math.round(pending / stepVal)));
         if(best !== current) paint(best);
       });
-    }, {passive: true});
-    window.addEventListener('resize', function(){ goTo(current); });
+    }, {passive:true});
+    /* 手机收起地址栏只会改高度，不该把轮播平滑拽回原位；只有宽度真变了才即时对齐 */
+    window.addEventListener('resize', function(){
+      var w = track.clientWidth;
+      if(w === lastW) return;
+      lastW = w;
+      measure();
+      track.scrollLeft = current * stepVal;
+      track.querySelectorAll('.cat-slides.multi').forEach(function(s){
+        s.scrollLeft = (parseInt(s.dataset.idx, 10) || 0) * s.clientWidth;
+      });
+    }, {passive:true});
     paint(0);
   }
 
