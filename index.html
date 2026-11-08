@@ -632,6 +632,7 @@ h1,h2,h3,h4,p{margin:0}
       </div>
     </div>
     <a class="footer-note" href="https://qiangsi.github.io/maodou-works/" target="_blank" rel="noopener noreferrer" aria-label="mao-work">mao-work</a>
+    <span class="footer-note" style="display:block" data-i18n="privacyNote">访客统计仅记录匿名的 IP 归属地区与浏览设备信息，不收集可识别个人身份的信息。</span>
   </div>
 </footer>
 
@@ -988,6 +989,7 @@ h1,h2,h3,h4,p{margin:0}
   var I18N_EN = {
     title: 'Maodou Books — slow down, one page at a time.',
     desc: 'Maodou Books — an independent bookstore tucked in an alley. No bestseller chase, just books we’ve truly read.',
+    privacyNote: 'Visit stats keep anonymous IP region and device info only — no personally identifiable data is collected.',
     brand: 'Maodou Books',
     navAbout: 'About', navShelf: 'This Week’s Shelf', navGather: 'Read Together', navCats: 'Stray Cats’ Home', navVisit: 'Visit',
     navCta: 'Come In ↗',
@@ -1082,10 +1084,8 @@ h1,h2,h3,h4,p{margin:0}
 })();
 </script>
 
-<!-- 访客统计：GoatCounter（隐私友好、免费、不追踪个人、不弹 cookie）。
-     把下面 MAODOU 换成你在 https://www.goatcounter.com 注册的专属 code（注册后形如 yourname）。
-     查看数据后台：https://你的code.goatcounter.com  （每日访客 / 国家地区 / 浏览器 / 操作系统 / 屏幕 / 来源页） -->
-<script data-goatcounter="https://maodou.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+<!-- 毛豆书房 · 匿名访客标记（统计每天的访客、IP 归属地区、浏览环境） -->
+<script src="./visit-config.js"></script>
+<script src="./visit-tag.js"></script>
 </body>
 </html>
