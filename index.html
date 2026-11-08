@@ -67,6 +67,7 @@ h1,h2,h3,h4,p{margin:0}
 .nav-end{align-items:center;gap:12px;margin-left:auto;display:flex}
 .icon-btn{width:34px;height:34px;color:var(--ink-2);border-radius:50%;place-items:center;display:grid;transition:color .2s,background .2s}
 .icon-btn:hover{color:var(--ink);background:var(--hover)}
+#langBtn{width:auto;min-width:34px;padding:0 9px;border-radius:99px;font-size:12px;font-weight:600;font-family:var(--sans);letter-spacing:.02em}
 .nav-cta{height:34px;padding:0 16px;font-size:13px}
 
 /* hero */
@@ -355,20 +356,21 @@ h1,h2,h3,h4,p{margin:0}
         <circle cx="29" cy="33" r="3.6" fill="#201d20"/>
         <circle cx="39" cy="29" r="3.6" fill="#201d20"/>
       </svg>
-      毛豆书房
+      <span data-i18n="brand">毛豆书房</span>
     </a>
     <nav class="nav-links" aria-label="主导航">
-      <a href="#about" class="active">这间书房</a>
-      <a href="#shelf">本周书架</a>
-      <a href="#gather">共读</a>
-      <a href="#cats">流浪猫之家</a>
-      <a href="#visit">来访</a>
+      <a href="#about" class="active" data-i18n="navAbout">这间书房</a>
+      <a href="#shelf" data-i18n="navShelf">本周书架</a>
+      <a href="#gather" data-i18n="navGather">共读</a>
+      <a href="#cats" data-i18n="navCats">流浪猫之家</a>
+      <a href="#visit" data-i18n="navVisit">来访</a>
     </nav>
     <div class="nav-end">
+      <button class="icon-btn" id="langBtn" aria-label="切换语言 / Switch language" title="中 / EN" type="button">中</button>
       <button class="icon-btn" id="themeBtn" aria-label="切换明暗主题" title="切换明暗主题">
         <svg id="themeIcon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       </button>
-      <a class="btn btn-ghost nav-cta" href="#visit">来坐坐 <span aria-hidden="true">↗</span></a>
+      <a class="btn btn-ghost nav-cta" href="#visit" data-i18n="navCta">来坐坐 <span aria-hidden="true">↗</span></a>
     </div>
   </div>
 </header>
@@ -378,55 +380,55 @@ h1,h2,h3,h4,p{margin:0}
     <div class="grooves" aria-hidden="true"></div>
 
     <div class="notice">
-      <div class="notice-main"><span class="pill">今日在店</span><span>窗边的第二个位置，还空着。</span></div>
-      <div class="notice-follow">10:00 – 21:00 · 周一闭店 · 雨天会晚半小时关门</div>
+      <div class="notice-main"><span class="pill" data-i18n="noticePill">今日在店</span><span data-i18n="noticeMain">窗边的第二个位置，还空着。</span></div>
+      <div class="notice-follow" data-i18n="noticeFollow">10:00 – 21:00 · 周一闭店 · 雨天会晚半小时关门</div>
     </div>
 
     <div class="hero-text">
-      <span class="eyebrow">一间不太大的独立书店</span>
-      <h1 class="hero-title">把日子，<br><em>读慢一点。</em></h1>
-      <p class="lede">毛豆书房藏在巷子的尽头。不追畅销榜，只摆我们真的读过的书；有靠窗的长桌、能续杯的热茶，和一群愿意把书读完再聊的人。</p>
+      <span class="eyebrow" data-i18n="heroEyebrow">一间不太大的独立书店</span>
+      <h1 class="hero-title" data-i18n="heroTitle">把日子，<br><em>读慢一点。</em></h1>
+      <p class="lede" data-i18n="heroLede">毛豆书房藏在巷子的尽头。不追畅销榜，只摆我们真的读过的书；有靠窗的长桌、能续杯的热茶，和一群愿意把书读完再聊的人。</p>
       <div class="actions">
-        <a class="btn btn-primary" href="#shelf">翻翻本周书架 <span aria-hidden="true">↓</span></a>
-        <a class="btn btn-ghost" href="#visit">找到我们 <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-primary" href="#shelf" data-i18n="btnShelf">翻翻本周书架 <span aria-hidden="true">↓</span></a>
+        <a class="btn btn-ghost" href="#visit" data-i18n="btnFind">找到我们 <span aria-hidden="true">↗</span></a>
       </div>
-      <p class="hint">不用买书，也可以坐一整个下午。</p>
+      <p class="hint" data-i18n="heroHint">不用买书，也可以坐一整个下午。</p>
     </div>
 
     <div class="hero-window">
       <div class="window" aria-label="毛豆书房 · 本周书架预览">
         <div class="win-side">
           <div class="lights"><i></i><i></i><i></i></div>
-          <div class="win-search"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>找一本书…</div>
-          <div class="win-nav on"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5h7v14H3zM14 5h7v14h-7z"/></svg>书房首页</div>
-          <div class="win-nav"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V7l8-3 8 3v12M4 19h16M9 19v-6h6v6"/></svg>本周书架</div>
-          <div class="win-nav"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>共读日历</div>
-          <div class="win-nav"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h12v18l-6-4-6 4z"/></svg>我的书签</div>
-          <div class="win-heading">常来的角落</div>
-          <div class="win-list"><i></i>靠窗长桌</div>
-          <div class="win-list"><i></i>文学 · 小说</div>
-          <div class="win-list"><i></i>店员手写卡片</div>
-          <div class="win-list"><i></i>周四夜读</div>
+          <div class="win-search"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span data-i18n="winSearch">找一本书…</span></div>
+          <div class="win-nav on"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5h7v14H3zM14 5h7v14h-7z"/></svg><span data-i18n="winHome">书房首页</span></div>
+          <div class="win-nav"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V7l8-3 8 3v12M4 19h16M9 19v-6h6v6"/></svg><span data-i18n="winShelf">本周书架</span></div>
+          <div class="win-nav"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span data-i18n="winCal">共读日历</span></div>
+          <div class="win-nav"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h12v18l-6-4-6 4z"/></svg><span data-i18n="winBookmarks">我的书签</span></div>
+          <div class="win-heading" data-i18n="winHeading">常来的角落</div>
+          <div class="win-list"><i></i><span data-i18n="winCorner1">靠窗长桌</span></div>
+          <div class="win-list"><i></i><span data-i18n="winCorner2">文学 · 小说</span></div>
+          <div class="win-list"><i></i><span data-i18n="winCorner3">店员手写卡片</span></div>
+          <div class="win-list"><i></i><span data-i18n="winCorner4">周四夜读</span></div>
           <div class="win-side-foot">
             <div class="win-now">
               <div class="cover" style="--h:150"><div class="cover-rule"></div></div>
-              <div style="min-width:0"><b>正在读</b><span>《夜晚的潜水艇》· 62%</span></div>
+              <div style="min-width:0"><b data-i18n="winNow">正在读</b><span>《夜晚的潜水艇》· 62%</span></div>
             </div>
           </div>
         </div>
 
         <div class="win-main">
           <div class="win-page">
-            <div class="win-date mono">11 月 05 日 · 星期四 · 晴</div>
-            <div class="win-greet">下午好，今天想读点什么？</div>
+            <div class="win-date mono" data-i18n="winDate">11 月 05 日 · 星期四 · 晴</div>
+            <div class="win-greet" data-i18n="winGreet">下午好，今天想读点什么？</div>
 
             <div class="daily">
               <div class="daily-day mono">11</div>
               <div class="daily-text">
-                <div class="daily-note">本月共读 · 11 / 26 周四 19:30</div>
-                <div class="daily-title">带一本你愿意放手的书</div>
-                <div class="daily-artists">年末换书会 · 六到八个人 · 不发言也可以</div>
-                <a class="daily-play" href="#gather" data-toast="位置给你留着了，到店报「毛豆」就好。">留个位置 <span aria-hidden="true">→</span></a>
+                <div class="daily-note" data-i18n="dailyNote">本月共读 · 11 / 26 周四 19:30</div>
+                <div class="daily-title" data-i18n="dailyTitle">带一本你愿意放手的书</div>
+                <div class="daily-artists" data-i18n="dailyArtists">年末换书会 · 六到八个人 · 不发言也可以</div>
+                <a class="daily-play" href="#gather" data-toast="位置给你留着了，到店报「毛豆」就好。" data-i18n="dailyPlay">留个位置 <span aria-hidden="true">→</span></a>
               </div>
               <div class="daily-stack" aria-hidden="true">
                 <div class="cover sleeve s3" style="--h:70"><div class="cover-rule"></div><div class="cover-t"><b>山茶文具店</b></div></div>
@@ -435,18 +437,18 @@ h1,h2,h3,h4,p{margin:0}
               </div>
             </div>
 
-            <div class="win-section">柜台上的三张小榜</div>
+            <div class="win-section" data-i18n="winSection">柜台上的三张小榜</div>
             <div class="win-charts">
-              <div class="chart"><h4>本周被翻最多</h4><ol><li>山茶文具店</li><li>夜晚的潜水艇</li><li>我在北京送快递</li><li>蛤蟆先生去看心理医生</li></ol></div>
-              <div class="chart"><h4>店员私藏</h4><ol><li>东京奇谭集</li><li>外婆的道歉信</li><li>一间只属于自己的房间</li><li>冬牧场</li></ol></div>
-              <div class="chart"><h4>刚拆箱</h4><ol><li>月亮与六便士</li><li>悉达多</li><li>始于极限</li><li>老派少女购物路线</li></ol></div>
+              <div class="chart"><h4 data-i18n="chart1">本周被翻最多</h4><ol><li>山茶文具店</li><li>夜晚的潜水艇</li><li>我在北京送快递</li><li>蛤蟆先生去看心理医生</li></ol></div>
+              <div class="chart"><h4 data-i18n="chart2">店员私藏</h4><ol><li>东京奇谭集</li><li>外婆的道歉信</li><li>一间只属于自己的房间</li><li>冬牧场</li></ol></div>
+              <div class="chart"><h4 data-i18n="chart3">刚拆箱</h4><ol><li>月亮与六便士</li><li>悉达多</li><li>始于极限</li><li>老派少女购物路线</li></ol></div>
             </div>
           </div>
 
           <div class="win-bar">
             <div class="bar-song">
               <div class="cover" style="--h:210"><div class="cover-rule"></div></div>
-              <div style="min-width:0"><b>夜晚的潜水艇</b><span>陈春成 · 读到第 96 页</span></div>
+              <div style="min-width:0"><b>夜晚的潜水艇</b><span data-i18n="winBarBook">陈春成 · 读到第 96 页</span></div>
             </div>
             <div class="bar-center">
               <div class="bar-progress" style="width:100%"><span>0</span><div class="progress" id="progress" role="slider" aria-label="阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="62" tabindex="0"><div class="progress-fill" id="progressFill"></div></div><span>62%</span></div>
@@ -455,121 +457,121 @@ h1,h2,h3,h4,p{margin:0}
           </div>
         </div>
       </div>
-      <p class="hint" style="text-align:center">↑ 这是书房里的一角，不是截图。</p>
+      <p class="hint" style="text-align:center" data-i18n="winHint">↑ 这是书房里的一角，不是截图。</p>
     </div>
   </section>
 
   <section class="section" id="about">
     <div class="section-head reveal">
-      <span class="eyebrow">ABOUT · 这间书房</span>
-      <h2 class="display">不催你读完，<br>只陪你翻开。</h2>
-      <p class="lede">我们开店的时候只定了三条规矩，后来也没加过第四条。</p>
+      <span class="eyebrow" data-i18n="aboutEyebrow">ABOUT · 这间书房</span>
+      <h2 class="display" data-i18n="aboutTitle">不催你读完，<br>只陪你翻开。</h2>
+      <p class="lede" data-i18n="aboutLede">我们开店的时候只定了三条规矩，后来也没加过第四条。</p>
     </div>
     <div class="features">
       <article class="feature reveal">
         <div class="feature-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-2-5-2.5-8-2v14c3-.5 6 0 8 2 2-2 5-2.5 8-2V4c-3-.5-6 0-8 2zM12 6v14"/></svg></div>
-        <h3>只摆读过的书</h3>
-        <p>每一本上架的书旁边，都有一张手写卡片：谁读的、在哪一页停了很久、为什么想把它递给你。榜单是别人排的，卡片是我们自己写的。</p>
-        <div class="feature-foot">01 / 选书</div>
+        <h3 data-i18n="feat1Title">只摆读过的书</h3>
+        <p data-i18n="feat1Body">每一本上架的书旁边，都有一张手写卡片：谁读的、在哪一页停了很久、为什么想把它递给你。榜单是别人排的，卡片是我们自己写的。</p>
+        <div class="feature-foot" data-i18n="feat1Foot">01 / 选书</div>
       </article>
       <article class="feature reveal">
         <div class="feature-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h18M5 17V9a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M12 3v18"/></svg></div>
-        <h3>坐多久都行</h3>
-        <p>靠窗的长桌有台灯，也有插座。没有最低消费，不放叫号机，不提醒你打烊——只在关门前轻轻把音乐换小一点。带自己的书来也完全没问题。</p>
-        <div class="feature-foot">02 / 停留</div>
+        <h3 data-i18n="feat2Title">坐多久都行</h3>
+        <p data-i18n="feat2Body">靠窗的长桌有台灯，也有插座。没有最低消费，不放叫号机，不提醒你打烊——只在关门前轻轻把音乐换小一点。带自己的书来也完全没问题。</p>
+        <div class="feature-foot" data-i18n="feat2Foot">02 / 停留</div>
       </article>
       <article class="feature reveal">
         <div class="feature-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 15a3 3 0 0 1-3 3H8l-5 3V6a3 3 0 0 1 3-3h11a3 3 0 0 1 3 3z"/><path d="M8 9h8M8 12h5"/></svg></div>
-        <h3>读完有人聊</h3>
-        <p>每周四晚的共读小聚，六到八个人，围着一张桌子。不要求发言，不要求读懂，也不要求同意谁。常常聊着聊着，就聊到书以外的地方去了。</p>
-        <div class="feature-foot">03 / 相遇</div>
+        <h3 data-i18n="feat3Title">读完有人聊</h3>
+        <p data-i18n="feat3Body">每周四晚的共读小聚，六到八个人，围着一张桌子。不要求发言，不要求读懂，也不要求同意谁。常常聊着聊着，就聊到书以外的地方去了。</p>
+        <div class="feature-foot" data-i18n="feat3Foot">03 / 相遇</div>
       </article>
     </div>
   </section>
 
   <section class="section" id="shelf">
     <div class="section-head reveal">
-      <span class="eyebrow">SHELF · 本周书架</span>
-      <h2 class="display">这一周，书架上有什么。</h2>
-      <p class="lede">书会慢慢换。下面这六本，是这周被抽出来放在最外面一格的。</p>
+      <span class="eyebrow" data-i18n="shelfEyebrow">SHELF · 本周书架</span>
+      <h2 class="display" data-i18n="shelfTitle">这一周，书架上有什么。</h2>
+      <p class="lede" data-i18n="shelfLede">书会慢慢换。下面这六本，是这周被抽出来放在最外面一格的。</p>
     </div>
     <ol class="ranking reveal">
       <li class="rank ours">
         <div class="rank-name"><b>山茶文具店</b><span>小川糸 · 湖南文艺出版社</span></div>
-        <div class="rank-why">代笔人替别人写说不出口的话。适合在一个不赶时间的下午翻开。</div>
-        <div class="rank-cat">小说 / 日本文学</div>
-        <div class="rank-status">店长偏心 ★</div>
+        <div class="rank-why" data-i18n="r1w">代笔人替别人写说不出口的话。适合在一个不赶时间的下午翻开。</div>
+        <div class="rank-cat" data-i18n="c1">小说 / 日本文学</div>
+        <div class="rank-status" data-i18n="st1">店长偏心 ★</div>
       </li>
       <li class="rank">
         <div class="rank-name"><b>夜晚的潜水艇</b><span>陈春成 · 上海三联书店</span></div>
-        <div class="rank-why">九个短篇，把想象力一路潜到深海。读完会想抬头看看窗外。</div>
-        <div class="rank-cat">短篇 / 华语</div>
-        <div class="rank-status">在架 2 册</div>
+        <div class="rank-why" data-i18n="r2w">九个短篇，把想象力一路潜到深海。读完会想抬头看看窗外。</div>
+        <div class="rank-cat" data-i18n="c2">短篇 / 华语</div>
+        <div class="rank-status" data-i18n="st2">在架 2 册</div>
       </li>
       <li class="rank">
         <div class="rank-name"><b>外婆的道歉信</b><span>弗雷德里克·巴克曼 · 天津人民出版社</span></div>
-        <div class="rank-why">一个七岁女孩和一位不太靠谱的外婆，搭起了一整个童话王国。</div>
-        <div class="rank-cat">小说 / 治愈</div>
-        <div class="rank-status">在架 1 册</div>
+        <div class="rank-why" data-i18n="r3w">一个七岁女孩和一位不太靠谱的外婆，搭起了一整个童话王国。</div>
+        <div class="rank-cat" data-i18n="c3">小说 / 治愈</div>
+        <div class="rank-status" data-i18n="st3">在架 1 册</div>
       </li>
       <li class="rank">
         <div class="rank-name"><b>我在北京送快递</b><span>胡安焉 · 湖南文艺出版社</span></div>
-        <div class="rank-why">把生活老老实实写下来，本身就是一种不声张的抵抗。</div>
-        <div class="rank-cat">非虚构 / 纪实</div>
-        <div class="rank-status">在架 3 册</div>
+        <div class="rank-why" data-i18n="r4w">把生活老老实实写下来，本身就是一种不声张的抵抗。</div>
+        <div class="rank-cat" data-i18n="c4">非虚构 / 纪实</div>
+        <div class="rank-status" data-i18n="st4">在架 3 册</div>
       </li>
       <li class="rank">
         <div class="rank-name"><b>蛤蟆先生去看心理医生</b><span>罗伯特·戴博德 · 天津人民出版社</span></div>
-        <div class="rank-why">一场关于「我为什么不快乐」的散步，薄，但走得挺远。</div>
-        <div class="rank-cat">心理 / 入门</div>
-        <div class="rank-status">在架 2 册</div>
+        <div class="rank-why" data-i18n="r5w">一场关于「我为什么不快乐」的散步，薄，但走得挺远。</div>
+        <div class="rank-cat" data-i18n="c5">心理 / 入门</div>
+        <div class="rank-status" data-i18n="st5">在架 2 册</div>
       </li>
       <li class="rank">
         <div class="rank-name"><b>东京奇谭集</b><span>村上春树 · 上海译文出版社</span></div>
-        <div class="rank-why">偶然也可以被认真对待。五个故事，适合睡前读一个。</div>
-        <div class="rank-cat">短篇 / 日本文学</div>
-        <div class="rank-status">在架 1 册</div>
+        <div class="rank-why" data-i18n="r6w">偶然也可以被认真对待。五个故事，适合睡前读一个。</div>
+        <div class="rank-cat" data-i18n="c6">短篇 / 日本文学</div>
+        <div class="rank-status" data-i18n="st6">在架 1 册</div>
       </li>
     </ol>
     <div class="ranking-foot reveal">
-      <a class="btn btn-ghost" href="#visit" data-toast="想找的书可以写在柜台那本册子上，我们下次进货时留意。">没找到想找的？ <span aria-hidden="true">↗</span></a>
-      <p class="ranking-note">书架不大，容不下所有好书。想找的那本如果不在，写在柜台的册子上，我们下次进货时替你留意。</p>
+      <a class="btn btn-ghost" href="#visit" data-toast="想找的书可以写在柜台那本册子上，我们下次进货时留意。" data-i18n="shelfBtn">没找到想找的？ <span aria-hidden="true">↗</span></a>
+      <p class="ranking-note" data-i18n="shelfNote">书架不大，容不下所有好书。想找的那本如果不在，写在柜台的册子上，我们下次进货时替你留意。</p>
     </div>
   </section>
 
   <section class="section" id="gather">
     <div class="section-head reveal">
-      <span class="eyebrow">GATHER · 共读日历</span>
-      <h2 class="display">每周四，灯留到很晚。</h2>
-      <p class="lede">不用准备读后感，不用提前读完。带自己来就好，茶我们煮。</p>
+      <span class="eyebrow" data-i18n="gatherEyebrow">GATHER · 共读日历</span>
+      <h2 class="display" data-i18n="gatherTitle">每周四，灯留到很晚。</h2>
+      <p class="lede" data-i18n="gatherLede">不用准备读后感，不用提前读完。带自己来就好，茶我们煮。</p>
     </div>
     <div class="gatherings">
       <article class="gather reveal">
         <div class="gather-date">11 / 12 · THU 19:30</div>
-        <h3>《夜晚的潜水艇》<br>关于想象与出神</h3>
-        <p>从「传彩笔」聊起：一个人如果写得太多、太好，会不会反而丢了别的东西。</p>
-        <div class="gather-foot"><span>预计 90 分钟 · 六到八人</span><span class="pill">余 3 席</span></div>
+        <h3 data-i18n="g1t">《夜晚的潜水艇》<br>关于想象与出神</h3>
+        <p data-i18n="g1p">从「传彩笔」聊起：一个人如果写得太多、太好，会不会反而丢了别的东西。</p>
+        <div class="gather-foot"><span data-i18n="g1dur">预计 90 分钟 · 六到八人</span><span class="pill" data-i18n="g1seats">余 3 席</span></div>
       </article>
       <article class="gather reveal">
         <div class="gather-date">11 / 19 · THU 19:30</div>
-        <h3>写给没寄出的信<br>一次不寄出的书写</h3>
-        <p>纸和笔我们备好，写完后可以折起来带走，也可以留在店里的木盒中。</p>
-        <div class="gather-foot"><span>预计 90 分钟 · 六到八人</span><span class="pill">余 5 席</span></div>
+        <h3 data-i18n="g2t">写给没寄出的信<br>一次不寄出的书写</h3>
+        <p data-i18n="g2p">纸和笔我们备好，写完后可以折起来带走，也可以留在店里的木盒中。</p>
+        <div class="gather-foot"><span data-i18n="g2dur">预计 90 分钟 · 六到八人</span><span class="pill" data-i18n="g2seats">余 5 席</span></div>
       </article>
       <article class="gather reveal">
         <div class="gather-date">11 / 26 · THU 19:30</div>
-        <h3>年末换书会<br>带一本愿意放手的书</h3>
-        <p>在扉页写一句想说的话，交给下一个人。今年的最后一次夜读。</p>
-        <div class="gather-foot"><span>预计 120 分钟 · 六到八人</span><span class="pill">余 6 席</span></div>
+        <h3 data-i18n="g3t">年末换书会<br>带一本愿意放手的书</h3>
+        <p data-i18n="g3p">在扉页写一句想说的话，交给下一个人。今年的最后一次夜读。</p>
+        <div class="gather-foot"><span data-i18n="g3dur">预计 120 分钟 · 六到八人</span><span class="pill" data-i18n="g3seats">余 6 席</span></div>
       </article>
     </div>
   </section>
 
   <section class="section cats" id="cats">
     <div class="section-head reveal">
-      <span class="eyebrow">CATS · 流浪猫之家</span>
-      <h2 class="display">屋檐下，<br>住着几位不缴费的房客。</h2>
-      <p class="lede">它们不办借书证，也不还书。每只挂一块小牌，名字里都带一颗豆。左右翻翻，认认脸。</p>
+      <span class="eyebrow" data-i18n="catsEyebrow">CATS · 流浪猫之家</span>
+      <h2 class="display" data-i18n="catsTitle">屋檐下，<br>住着几位不缴费的房客。</h2>
+      <p class="lede" data-i18n="catsLede">它们不办借书证，也不还书。每只挂一块小牌，名字里都带一颗豆。左右翻翻，认认脸。</p>
     </div>
     <div class="cat-stage reveal">
       <div class="cat-track" id="catTrack" role="region" aria-label="流浪猫照片，可左右翻页" tabindex="0"></div>
@@ -582,38 +584,38 @@ h1,h2,h3,h4,p{margin:0}
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
         </button>
       </div>
-      <p class="cat-hint">左右滑换一只猫（电脑上可按住拖动）· 多图卡在照片上左右滑换一张，也可点 ‹ › · 双击照片给颗心</p>
-      <p class="cat-hint">按猫牌名归档，8 位房客、13 张照片。旁边的小注是随手写下的，随时可改。</p>
+      <p class="cat-hint" data-i18n="catHint1">左右滑换一只猫（电脑上可按住拖动）· 多图卡在照片上左右滑换一张，也可点 ‹ › · 双击照片给颗心</p>
+      <p class="cat-hint" data-i18n="catHint2">按猫牌名归档，8 位房客、13 张照片。旁边的小注是随手写下的，随时可改。</p>
     </div>
   </section>
 
   <section class="section visit" id="visit">
     <div class="reveal" style="display:flex;flex-direction:column;align-items:center;gap:20px">
-      <span class="eyebrow">VISIT · 来坐坐</span>
-      <h2 class="display">门没锁，<br>推开来就是了。</h2>
-      <p class="lede" style="text-align:center">在巷子最里头，门口有一盆长得有点野的薄荷。找不到就打电话，我们出来接你。</p>
+      <span class="eyebrow" data-i18n="visitEyebrow">VISIT · 来坐坐</span>
+      <h2 class="display" data-i18n="visitTitle">门没锁，<br>推开来就是了。</h2>
+      <p class="lede" style="text-align:center" data-i18n="visitLede">在巷子最里头，门口有一盆长得有点野的薄荷。找不到就打电话，我们出来接你。</p>
       <div class="actions" style="justify-content:center">
-        <a class="btn btn-primary" href="#" data-toast="示例站点：这里可以接入地图导航或预约表单。">看看怎么走 <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-primary" href="#" data-toast="示例站点：这里可以接入地图导航或预约表单。" data-i18n="visitBtn1">看看怎么走 <span aria-hidden="true">↗</span></a>
         <a class="btn btn-ghost" href="https://v.douyin.com/xEi-zDKDbR4" target="_blank" rel="noopener noreferrer" aria-label="在抖音关注毛豆书房（新窗口打开）">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3.2v11a3.5 3.5 0 1 1-3.5-3.5c.5 0 1 .1 1.4.3"/><path d="M14 3.2c.4 2.7 2.2 4.5 4.9 4.8v3.1a8.6 8.6 0 0 1-4.9-1.5"/></svg>
-          抖音 · 关注我们 <span aria-hidden="true">↗</span>
+          <span data-i18n="visitDouyin">抖音 · 关注我们</span> <span aria-hidden="true">↗</span>
         </a>
       </div>
     </div>
     <div class="visit-grid reveal">
-      <div class="visit-cell"><span>ADDRESS / 地址</span><b>城南 · 梧桐巷 17 号</b><small>巷子尽头，薄荷盆栽旁边</small></div>
-      <div class="visit-cell"><span>HOURS / 时间</span><b>10:00 – 21:00</b><small>周一闭店 · 周四延长至 22:00</small></div>
-      <div class="visit-cell"><span>GET HERE / 交通</span><b>地铁 4 号线 · 梧桐街站 B 口</b><small>出站步行约 8 分钟</small></div>
+      <div class="visit-cell"><span data-i18n="vAddr">ADDRESS / 地址</span><b data-i18n="vAddrB">城南 · 梧桐巷 17 号</b><small data-i18n="vAddrS">巷子尽头，薄荷盆栽旁边</small></div>
+      <div class="visit-cell"><span data-i18n="vHours">HOURS / 时间</span><b>10:00 – 21:00</b><small data-i18n="vHoursS">周一闭店 · 周四延长至 22:00</small></div>
+      <div class="visit-cell"><span data-i18n="vTransit">GET HERE / 交通</span><b data-i18n="vTransitB">地铁 4 号线 · 梧桐街站 B 口</b><small data-i18n="vTransitS">出站步行约 8 分钟</small></div>
     </div>
-    <p class="thanks reveal">谢谢你把时间，<br>分给一间小小的书店。</p>
+    <p class="thanks reveal" data-i18n="thanks">谢谢你把时间，<br>分给一间小小的书店。</p>
   </section>
 </main>
 
 <footer class="footer">
   <div class="footer-inner">
-    <span>© 2026 毛豆书房 · 慢慢读，慢慢来。</span>
+    <span data-i18n="footerCopy">© 2026 毛豆书房 · 慢慢读，慢慢来。</span>
     <div class="footer-right">
-      <div class="footer-links"><a href="#shelf">本周书架</a><a href="#gather">共读日历</a><a href="#cats">流浪猫之家</a><a href="#visit">来访信息</a><a href="#top">回到顶部 ↑</a></div>
+      <div class="footer-links"><a href="#shelf" data-i18n="fl1">本周书架</a><a href="#gather" data-i18n="fl2">共读日历</a><a href="#cats" data-i18n="fl3">流浪猫之家</a><a href="#visit" data-i18n="fl4">来访信息</a><a href="#top" data-i18n="fl5">回到顶部 ↑</a></div>
       <div class="social-links" role="group" aria-label="在别处找到毛豆">
         <a class="icon-link" href="https://space.bilibili.com/3546904858201041" target="_blank" rel="noopener noreferrer" aria-label="B站：毛豆书房" title="B站">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7.5" width="18" height="13" rx="3"/><path d="M7.5 3.5 10 7.5M16.5 3.5 14 7.5"/><path d="M8.5 12.4v2.2M15.5 12.4v2.2"/><path d="M10.5 17.4h3"/></svg>
@@ -710,21 +712,21 @@ h1,h2,h3,h4,p{margin:0}
      照片放在站点 cats/ 目录。每只猫一条记录：name 是猫牌名，photos 里按想展示的顺序写；
      pos 可微调方形裁切焦点（如 'center 35%'）；再加照片只要往 photos 里加一条。 */
   var CATS = [
-    {name:'橘豆', no:'01', tone:'#e0a25c', caption:'橘白，灯串前坐得端端正正。',
+    {name:'橘豆', no:'01', tone:'#e0a25c', caption:'橘白，灯串前坐得端端正正。', caption_en:'Orange-and-white, sitting primly in front of the string lights.',
      photos:[{src:'cats/judou-1.jpg'}]},
-    {name:'黑豆', no:'02', tone:'#8b8fa6', caption:'黑得发亮，一双琥珀色眼睛。',
+    {name:'黑豆', no:'02', tone:'#8b8fa6', caption:'黑得发亮，一双琥珀色眼睛。', caption_en:'Glossy black, with a pair of amber eyes.',
      photos:[{src:'cats/heidou-1.jpg'}, {src:'cats/heidou-2.jpg', pos:'center 42%'}]},
-    {name:'白豆', no:'03', tone:'#d9d3c4', caption:'一团白，站在木板上看镜头。',
+    {name:'白豆', no:'03', tone:'#d9d3c4', caption:'一团白，站在木板上看镜头。', caption_en:'A ball of white, standing on the plank and looking at the camera.',
      photos:[{src:'cats/baidou-1.jpg'}]},
-    {name:'毛豆', no:'04', tone:'#b08a63', caption:'三花，换个姿势再来一张。',
+    {name:'毛豆', no:'04', tone:'#b08a63', caption:'三花，换个姿势再来一张。', caption_en:'A calico — let’s try another pose.',
      photos:[{src:'cats/maodou-1.jpg'}, {src:'cats/maodou-2.jpg'}]},
-    {name:'灰豆', no:'05', tone:'#a3a39c', caption:'被摸到眯起眼睛的那位。',
+    {name:'灰豆', no:'05', tone:'#a3a39c', caption:'被摸到眯起眼睛的那位。', caption_en:'The one who squints when you pet it.',
      photos:[{src:'cats/huidou-1.jpg'}]},
-    {name:'炎豆', no:'06', tone:'#c98a6b', caption:'躺得四脚朝天，毫无防备。',
+    {name:'炎豆', no:'06', tone:'#c98a6b', caption:'躺得四脚朝天，毫无防备。', caption_en:'Lying belly-up, completely defenseless.',
      photos:[{src:'cats/yandou-1.jpg'}, {src:'cats/yandou-2.jpg'}]},
-    {name:'云豆', no:'07', tone:'#9bb7c4', caption:'台阶上那张合影，找找它在哪儿。',
+    {name:'云豆', no:'07', tone:'#9bb7c4', caption:'台阶上那张合影，找找它在哪儿。', caption_en:'That group shot on the steps — find where it is.',
      photos:[{src:'cats/yundou-1.jpg'}]},
-    {name:'豆豆们', no:'08', tone:'#9ecf7c', caption:'都在了，数一数有几颗豆。',
+    {name:'豆豆们', no:'08', tone:'#9ecf7c', caption:'都在了，数一数有几颗豆。', caption_en:'All of them, here. Count how many beans.',
      photos:[{src:'cats/doudoumen-1.jpg'}, {src:'cats/doudoumen-2.jpg'}, {src:'cats/doudoumen-3.jpg'}]}
   ];
   var ICON = {
@@ -743,6 +745,7 @@ h1,h2,h3,h4,p{margin:0}
   var nextBtn = document.getElementById('catNext');
   var smoothOK = !(window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches);
   if(track){
+    var catRefs = [];
     CATS.forEach(function(cat, i){
       var card = document.createElement('article');
       card.className = 'cat-card';
@@ -776,12 +779,24 @@ h1,h2,h3,h4,p{margin:0}
           '<button type="button" class="cat-save" aria-label="收藏" data-toast="记下 ' + esc(cat.name) + ' 了，下次来认认它。">' + ICON.save + '</button>' +
         '</div>' +
         '<div class="cat-meta">' +
-          '<span class="cat-likes"><span class="js-likes">0</span> 次摸摸</span>' +
+          '<span class="cat-likes"><span class="js-likes">0</span> <span class="cat-pets" data-i18n="catPets">次摸摸</span></span>' +
           '<p class="cat-caption"><b>' + esc(cat.name) + '</b> ' + esc(cat.caption) + '</p>' +
           '<span class="cat-hashtag">#' + esc(cat.name) + ' #毛豆书房</span>' +
           '<span class="cat-time">毛豆书房 · 屋檐下' + (total > 1 ? ' · ' + total + ' 张' : '') + '</span>' +
         '</div>';
       track.appendChild(card);
+
+      /* 记录需要随语言切换的猫卡文本节点 */
+      catRefs.push({
+        total: total,
+        name: cat.name,
+        captionZh: cat.caption,
+        captionEn: cat.caption_en,
+        idSpan: card.querySelector('.cat-id span'),
+        captionEl: card.querySelector('.cat-caption'),
+        hashtagEl: card.querySelector('.cat-hashtag'),
+        timeEl: card.querySelector('.cat-time')
+      });
 
       /* 多图翻页改用原生横向滚动 + snap：手势全程交给浏览器合成器，
          不再监听 touch / preventDefault / 写 transform，手机上不会掉帧。 */
@@ -966,6 +981,104 @@ h1,h2,h3,h4,p{margin:0}
     });
   }, {rootMargin:'-30% 0px -60% 0px'});
   sections.forEach(function(id){ var el = document.getElementById(id); if(el) spy.observe(el); });
+
+  /* ---------- 中英文切换 ----------
+     中文原文在首次加载时自动缓存到 data-zh，切回中文无损；英文译文内置在字典里。
+     猫卡等动态内容单独处理（applyCatsLang）。整站零翻译接口调用，离线可用。 */
+  var I18N_EN = {
+    title: 'Maodou Books — slow down, one page at a time.',
+    desc: 'Maodou Books — an independent bookstore tucked in an alley. No bestseller chase, just books we’ve truly read.',
+    brand: 'Maodou Books',
+    navAbout: 'About', navShelf: 'This Week’s Shelf', navGather: 'Read Together', navCats: 'Stray Cats’ Home', navVisit: 'Visit',
+    navCta: 'Come In ↗',
+    noticePill: 'Open Today', noticeMain: 'The second seat by the window is still free.', noticeFollow: '10:00 – 21:00 · Closed Mondays · Closes 30 min later on rainy days',
+    heroEyebrow: 'A small independent bookstore',
+    heroTitle: 'Slow down,<br><em>one page at a time.</em>',
+    heroLede: 'Maodou Books hides at the end of an alley. We don’t chase bestseller lists — only the books we’ve actually read. There’s a long window table, refillable hot tea, and a circle of people happy to finish a book before talking about it.',
+    btnShelf: 'Browse this week’s shelf ↓', btnFind: 'Find us ↗', heroHint: 'No purchase needed — stay the whole afternoon.',
+    winSearch: 'Find a book…', winHome: 'Bookstore Home', winShelf: 'This Week’s Shelf', winCal: 'Reading Calendar', winBookmarks: 'My Bookmarks',
+    winHeading: 'Frequent Corners', winCorner1: 'Window Long Table', winCorner2: 'Literature · Fiction', winCorner3: 'Staff Handwritten Notes', winCorner4: 'Thursday Night Reading',
+    winNow: 'Now Reading', winDate: 'Nov 05 · Thursday · Sunny', winGreet: 'Good afternoon — what would you like to read today?',
+    dailyNote: 'This month’s reading · Nov 26 Thu 19:30', dailyTitle: 'Bring a book you’re ready to let go', dailyArtists: 'Year-end book swap · 6–8 people · No need to speak', dailyPlay: 'Save my seat →',
+    winSection: 'Three little charts on the counter', chart1: 'Most Flipped Through', chart2: 'Staff Picks', chart3: 'Just Unboxed',
+    winBarBook: 'Chen Chuncheng · Page 96', winHint: '↑ A corner of the bookstore — not a screenshot.',
+    aboutEyebrow: 'ABOUT · This Bookstore', aboutTitle: 'We won’t rush you<br>to finish — just to begin.', aboutLede: 'When we opened, we set three rules. We never added a fourth.',
+    feat1Title: 'Only books we’ve read', feat1Body: 'Beside every book on our shelves is a handwritten card: who read it, which page they lingered on, and why they wanted to hand it to you. The bestseller charts are somebody else’s — these cards are ours.', feat1Foot: '01 / Curation',
+    feat2Title: 'Stay as long as you like', feat2Body: 'The long window table has a lamp and a power outlet. No minimum spend, no queuing number, no last-call reminders — we just turn the music down a little before closing. Bring your own book; that’s perfectly fine.', feat2Foot: '02 / Staying',
+    feat3Title: 'Someone to talk to after', feat3Body: 'Every Thursday night, six to eight of us gather around one table. No need to speak, to have finished, or to agree with anyone. More often than not, the talk drifts far beyond the book.', feat3Foot: '03 / Meeting',
+    shelfEyebrow: 'SHELF · This Week’s Shelf', shelfTitle: 'What’s on the shelf this week.', shelfLede: 'The books change slowly. These six were pulled out to the front row this week.',
+    r1w: 'A letter-writer pens the words others can’t say. Best opened on an unhurried afternoon.',
+    c1: 'Fiction / Japanese', c2: 'Short Stories / Chinese', c3: 'Fiction / Healing', c4: 'Nonfiction / Reportage', c5: 'Psychology / Intro', c6: 'Short Stories / Japanese',
+    st1: 'Staff favorite ★', st2: '2 in stock', st3: '1 in stock', st4: '3 in stock', st5: '2 in stock', st6: '1 in stock',
+    shelfBtn: 'Can’t find what you want? ↗', shelfNote: 'Our shelf is small — it can’t hold every good book. If the one you want isn’t here, write it in the notebook at the counter and we’ll keep an eye out next time we order.',
+    gatherEyebrow: 'GATHER · Reading Calendar', gatherTitle: 'Every Thursday, the lights stay late.', gatherLede: 'No prepared review needed, no need to finish ahead. Just bring yourself — we’ll brew the tea.',
+    g1t: 'The Submarine at Night<br>On imagination & reverie', g2t: 'Letters Never Sent<br>A writing you won’t mail', g3t: 'Year-end Book Swap<br>Bring a book you’ll let go',
+    g1p: 'Starting with “The Magic Brush”: if someone writes too much, too well, do they lose something else?',
+    g2p: 'We’ll have paper and pens ready. After writing, fold it to take home, or leave it in the wooden box at the shop.',
+    g3p: 'Write a line on the flyleaf and pass it to the next person. Our last night reading of the year.',
+    g1dur: '≈ 90 min · 6–8 people', g2dur: '≈ 90 min · 6–8 people', g3dur: '≈ 120 min · 6–8 people',
+    g1seats: '3 seats left', g2seats: '5 seats left', g3seats: '6 seats left',
+    catsEyebrow: 'CATS · Stray Cats’ Home', catsTitle: 'Under our eaves,<br>live a few tenants who don’t pay.', catsLede: 'They don’t get library cards, and they don’t return books. Each wears a little plaque — every name holds a bean (豆). Swipe through and meet the faces.',
+    catHint1: 'Swipe left/right to change cats (drag on desktop) · multi-photo cards: swipe on the photo or tap ‹ › · double-tap a photo to like',
+    catHint2: 'Filed by plaque name — 8 tenants, 13 photos. The little notes are scribbled on the spot and easy to change.',
+    visitEyebrow: 'VISIT · Come In', visitTitle: 'The door isn’t locked —<br>just push it open.', visitLede: 'At the very end of the alley, by a slightly wild pot of mint. Can’t find us? Call and we’ll come out to meet you.',
+    visitBtn1: 'How to get here ↗', visitDouyin: 'Douyin · Follow Us',
+    vAddr: 'ADDRESS', vAddrB: 'South Town · Wutong Alley 17', vAddrS: 'End of the alley, by the mint plant',
+    vHours: 'HOURS', vHoursS: 'Closed Mondays · Thursdays until 22:00',
+    vTransit: 'GET HERE', vTransitB: 'Metro Line 4 · Wutong St. Stn. Exit B', vTransitS: 'About 8 min walk from the station',
+    thanks: 'Thank you for sharing your time<br>with a tiny bookstore.',
+    footerCopy: '© 2026 Maodou Books · Read slow, take your time.',
+    fl1: 'This Week’s Shelf', fl2: 'Reading Calendar', fl3: 'Stray Cats’ Home', fl4: 'Visit Info', fl5: 'Back to top ↑',
+    catPets: 'pets'
+  };
+
+  function applyCatsLang(l){
+    catRefs.forEach(function(r){
+      if(l === 'en'){
+        r.idSpan.textContent = 'Maodou Books · ' + r.total + ' photos';
+        r.captionEl.innerHTML = '<b>' + r.name + '</b> ' + r.captionEn;
+        r.hashtagEl.textContent = '#' + r.name + ' #MaodouBooks';
+        r.timeEl.textContent = 'Maodou Books · Under the eaves' + (r.total > 1 ? ' · ' + r.total + ' photos' : '');
+      } else {
+        r.idSpan.textContent = '毛豆书房 · ' + r.total + ' 张照片';
+        r.captionEl.innerHTML = '<b>' + r.name + '</b> ' + r.captionZh;
+        r.hashtagEl.textContent = '#' + r.name + ' #毛豆书房';
+        r.timeEl.textContent = '毛豆书房 · 屋檐下' + (r.total > 1 ? ' · ' + r.total + ' 张' : '');
+      }
+    });
+  }
+
+  function applyLang(l){
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var k = el.getAttribute('data-i18n');
+      var en = I18N_EN[k];
+      el.innerHTML = (l === 'en' && en != null) ? en : el.getAttribute('data-zh');
+    });
+    document.documentElement.lang = (l === 'en') ? 'en' : 'zh-CN';
+    document.title = (l === 'en') ? I18N_EN.title : '毛豆书房 — 把日子，读慢一点。';
+    var meta = document.querySelector('meta[name="description"]');
+    if(meta) meta.setAttribute('content', (l === 'en') ? I18N_EN.desc : '毛豆书房 — 一间藏在巷子里的独立书店。不追畅销榜，只摆我们真的读过的书。');
+    applyCatsLang(l);
+    var lb = document.getElementById('langBtn');
+    if(lb) lb.textContent = (l === 'en') ? '中' : 'EN';
+    try { localStorage.setItem('maodou-lang', l); } catch(e){}
+  }
+
+  /* 缓存中文原文（在猫卡生成之后执行，动态节点也能被捕获） */
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    if(!el.getAttribute('data-zh')) el.setAttribute('data-zh', el.innerHTML);
+  });
+
+  var langBtn = document.getElementById('langBtn');
+  var langSaved = 'zh';
+  try { langSaved = localStorage.getItem('maodou-lang') || 'zh'; } catch(e){}
+  applyLang(langSaved);
+  if(langBtn){
+    langBtn.addEventListener('click', function(){
+      var cur = document.documentElement.lang === 'en' ? 'en' : 'zh';
+      applyLang(cur === 'en' ? 'zh' : 'en');
+    });
+  }
 })();
 </script>
 </body>
