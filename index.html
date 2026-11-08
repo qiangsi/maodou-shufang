@@ -282,7 +282,9 @@ h1,h2,h3,h4,p{margin:0}
 .footer-inner a.icon-link{width:34px;height:34px;color:var(--ink-3);border-radius:10px;place-items:center;display:grid;transition:color .25s,background .25s,transform .3s var(--spring)}
 .footer-inner a.icon-link:hover{color:var(--accent);background:var(--hover);transform:translateY(-2px)}
 .icon-link svg{width:18px;height:18px}
-.footer-note{width:100%;color:var(--ink-3);font-size:12px;opacity:.8}
+.footer-note{width:100%;color:var(--ink-3);font-size:12px;opacity:.8;text-decoration:none}
+.footer-note:hover{opacity:1}
+.footer-note:visited{color:var(--ink-3)}
 
 /* toast */
 .toast{position:fixed;left:50%;bottom:28px;translate:-50% 20px;opacity:0;pointer-events:none;background:var(--raised);color:var(--ink);box-shadow:0 0 0 1px var(--line),0 16px 40px -16px var(--shadow);border-radius:99px;padding:10px 20px;font-size:14px;font-weight:600;z-index:100;transition:opacity .35s var(--ease),translate .35s var(--ease)}
@@ -627,7 +629,7 @@ h1,h2,h3,h4,p{margin:0}
         </a>
       </div>
     </div>
-    <div class="footer-note">本页为演示稿：地址、书单与活动信息均为示例内容，请替换为真实资料。页面没有追踪脚本，主题偏好只存在你自己的浏览器里。</div>
+    <a class="footer-note" href="https://qiangsi.github.io/maodou-works/" target="_blank" rel="noopener noreferrer" aria-label="mao-work">mao-work</a>
   </div>
 </footer>
 
